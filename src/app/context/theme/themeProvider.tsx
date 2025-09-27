@@ -8,7 +8,7 @@ interface childrenType{
 
 export default function ThemeProv({children}: childrenType){
     
-    const [theme, setTheme] = useState("light");
+    const [theme, setTheme] = useState("dark");
 
     useEffect(()=> {
         const savedTheme = localStorage.getItem("theme");

@@ -60,7 +60,38 @@ body{
 }
 
 
+
 :root{
+    --color-regular-text: rgb(255, 255, 255);
+    --color-black: black;
+    --color-01: #131618e7;
+    --color-02: #111821;
+    --color-03: #d63d00; 
+    --color-04: #5c1e07;
+    --color-05: rgb(228, 228, 228); //details color
+    --color-06: rgb(34, 34, 34);
+    --color-07: #474747;
+    --color-08: #101a257a; //component background
+    --color-09: rgba(203, 203, 206, 0.363);
+    --color-10: #f0481e;
+    --color-11: #f7a950;   
+    --color-12: #e5e6e7da; 
+    --color-13: #ff8f72;
+    --color-14: rgb(217 217 217 / 39%);
+    --color-15: #aa9fbd6e;
+    --color-16: #ebeaecec;
+    --color-17: #fffb11;
+    --color-18: #231a33f8;
+
+
+    --footer-color-01: #0d0f11e7; //Footer
+    --color-full-white: white;
+    --steel-ball: rgb(134, 29, 99);
+    --steel-ball-02: rgb(26, 75, 167); 
+} 
+
+
+body[data-theme= "light"]{
     --color-regular-text: rgb(0, 0, 0);
     --color-black: white;
     --color-01: #ece5e5ec;
@@ -89,31 +120,4 @@ body{
 
 }
 
-body[data-theme= "dark"]{
-    --color-regular-text: rgb(255, 255, 255);
-    --color-black: black;
-    --color-01: #131618e7;
-    --color-02: #111821;
-    --color-03: #d63d00; 
-    --color-04: #5c1e07;
-    --color-05: rgb(228, 228, 228); //details color
-    --color-06: rgb(34, 34, 34);
-    --color-07: #474747;
-    --color-08: #101a257a; //component background
-    --color-09: rgba(203, 203, 206, 0.363);
-    --color-10: #f0481e;
-    --color-11: #f7a950;   
-    --color-12: #e5e6e7da; 
-    --color-13: #ff8f72;
-    --color-14: rgb(217 217 217 / 39%);
-    --color-15: #aa9fbd6e;
-    --color-16: #ebeaecec;
-    --color-17: #fffb11;
-    --color-18: #231a33f8;
 
-
-    --footer-color-01: #0d0f11e7; //Footer
-    --color-full-white: white;
-    --steel-ball: rgb(134, 29, 99);
-    --steel-ball-02: rgb(26, 75, 167); 
-} 
