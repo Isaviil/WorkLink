@@ -1,0 +1,191 @@
+@use '../styles/mixins';
+@use '../styles/placeholders';
+
+.professionals{
+
+    nav{
+        padding-bottom: 80px;
+    }
+
+    &-display{
+        @include mixins.flex-prop(space-between, center);
+        padding-top: 70px;
+
+        &-config{
+            @include mixins.sizes(auto, 100%);
+        }        
+
+        &-elements{
+            @include mixins.sizes(80%, 100%);
+            @include mixins.flex-prop(space-evenly, center);
+            flex-wrap: wrap;
+            
+
+            &-isLoading{
+                position: absolute;
+                top: 0;
+                left: 0;
+                @include mixins.sizes(100%, 100vh);
+                @include mixins.flex-prop(center, center, column);
+                min-width: 600px;
+                background-color: var(--color-01);
+
+                p{
+                    @extend %h-lg-04;
+                }
+            }
+
+            &-user{
+                @include mixins.sizes(27%, 350px, 287px);
+                @include mixins.flex-prop(center, center, column, 5px);     
+                padding: 7px;
+
+                &-img{
+                    @include mixins.sizes(75%, 60%);
+
+                    overflow: hidden;
+
+                    img{
+                        @extend %fit-cover;
+                        border-radius: 50%;
+                    }
+                }
+
+                &-text{
+                    @include mixins.flex-prop(center, center, column, 1px);   
+                    
+                    h2{
+                        @extend %h-small;
+                    }
+                    
+                    p{
+                        @extend %p-sm;
+                    }
+
+                    button{
+                        padding: 5px;
+                        background-color: var(--steel-ball);
+                        border: none;
+                        border-radius: 7px;
+                        @extend %p-xs-01;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    @include mixins.respond-to(xlg){
+
+        &-display{
+            gap: 25px;
+            flex-direction: column;
+
+            &-config{
+                
+                .filter-location{
+                    
+                    &-options{
+                        flex-direction: row;
+                        gap: 25px;
+                    }
+                }
+            }
+
+            &-elements{
+                width: 100%;
+
+                &-user{
+                    min-width: 285px;
+
+                    &-img{
+                        width: 70%;
+                        height: 55%;
+                    }
+                }
+            }
+        }
+    }
+
+
+    @include mixins.respond-to(lg){
+
+        nav{
+            padding-bottom: 50px;
+        }   
+
+        &-display{
+            gap: 25px;
+
+            flex-direction: column;
+
+            &-config{
+                
+                .filter-location{
+                    
+                    &-options{
+                        flex-direction: row;
+                    }
+                }
+            }
+
+            &-elements{
+                width: 100%;
+                    
+            }
+        }        
+    }
+
+    @include mixins.respond-to(md){
+
+        nav{
+            padding-bottom: 0px;
+        }   
+
+        &-display{        
+            padding-top: 40px;
+
+            &-config{
+                
+                .filter-location{
+                    
+                    &-options{
+                        flex-direction: column;
+                        gap: 5px;
+                    }
+                }
+            }
+
+            &-elements{
+                justify-content: space-evenly;
+
+                &-user{
+                    width: 250px;
+                    height: 300px;
+                    max-width: unset;
+                    min-width: unset;
+                    
+                    
+                    &-text{
+                        gap: 3px;
+
+                        h2{
+                            font-size: 1em;
+                        }
+
+                        p{
+                            font-size: .77em;
+                        }
+
+                        button{
+                            font-size: .77em;
+                        }
+                    }
+                }
+            }
+        }        
+    }
+
+}

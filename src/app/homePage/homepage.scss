@@ -1,0 +1,6 @@
+@use '../styles/mixins';
+
+.home{
+    @include mixins.sizes(100%, auto);
+    @include mixins.flex-prop(center, center, column, 70px);
+}

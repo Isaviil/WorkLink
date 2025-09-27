@@ -1,0 +1,28 @@
+@use '../../styles/mixins';
+@use '../../styles/placeholders';
+
+
+.filter-location{
+    @include mixins.sizes(100%, 100%);
+    @include mixins.flex-prop(center, center, column, 4px);
+
+    &-loading{
+
+    }
+
+    h2{
+        @extend %h-md-02;
+        font-weight: 500
+    }
+
+    &-options{
+        @include mixins.flex-prop(center, center, column, 6px);
+
+        button{
+            @extend %p-sm;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+        }
+    }
+}

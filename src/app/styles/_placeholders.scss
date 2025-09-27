@@ -1,0 +1,83 @@
+@use './mixins';
+
+%main-container{
+    @include mixins.sizes(100%, auto);
+    @include mixins.flex-prop(center, center, column);
+}
+
+/*img-cover*/
+%fit-cover{
+    @include mixins.sizes(100%, 100%);
+    object-fit: cover;
+}
+
+
+/*centrar*/
+%center{
+    @include mixins.flex-prop(center, center);
+}
+
+
+
+/*words*/
+%h-small{
+    @include mixins.f-prop(var(--color-regular-text), 1.1em, 300, "Montserrat");
+}
+
+%h-lg-01{
+    @include mixins.f-prop(var(--color-regular-text), 1.68em, 350, "Montserrat");
+}
+
+%h-lg-02{
+    @include mixins.f-prop(var(--color-regular-text), 1.88em, 350, "Montserrat");
+}
+
+%h-lg-03{
+    @include mixins.f-prop(var(--color-regular-text), 2.18em, 350, "Montserrat");
+}
+
+%h-lg-04{
+    @include mixins.f-prop(var(--color-regular-text), 2.48em, 350, "Montserrat");
+}
+
+%h-md-02{
+    @include mixins.f-prop(var(--color-regular-text), 1.45em, 350, "Montserrat");
+}
+
+%h-md-03{
+    @include mixins.f-prop(var(--color-regular-text), 1.32em, 350, "Montserrat");
+}
+
+
+%p-xs-01{
+    @include mixins.f-prop(var(--color-regular-text), .85em, 350, "Montserrat");
+}
+
+%p-xs-02{
+    @include mixins.f-prop(var(--color-regular-text), .75em, 320, "Montserrat");
+}
+
+%p-xs-03{
+    @include mixins.f-prop(var(--color-regular-text), .8em, 400, "Montserrat");
+}
+
+%p-xs-04{
+    @include mixins.f-prop(var(--color-regular-text), .68em, 400, "Montserrat");
+}
+
+%p-sm{
+    @include mixins.f-prop(var(--color-regular-text), .9em, 350, "Montserrat");
+}
+
+%p-sm-01{
+    @include mixins.f-prop(var(--color-regular-text), .95em, 350, "Montserrat");
+}
+
+%p-sm-02{
+    @include mixins.f-prop(var(--color-regular-text), 1em, 450, "Montserrat");
+}
+
+
+
+
+

@@ -1,0 +1,144 @@
+@use '../styles/mixins';
+@use '../styles//placeholders';
+
+.login{
+    @include mixins.sizes(100%, 100vh);
+    @include mixins.flex-prop(right, center);
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    min-height: 600px;
+
+    &-text{
+        @include mixins.sizes(90%, 100%);
+        @include mixins.flex-prop(center, null, column);
+        left: 0;
+        position: absolute;
+        z-index: 0;
+        padding: 0px 15px;
+
+        h3{
+            @extend %h-lg-04;
+            font-family: "Raleway";
+            //white-space: nowrap;
+
+            &:nth-child(1){
+                font-size: 6.5em;
+            }
+
+            &:nth-child(2){
+                font-size: 3em;
+                font-weight: 500;
+                
+            }
+
+            &:nth-child(3){
+                font-size: 7em;
+                font-weight: 500;
+            }
+
+            &:nth-child(4){
+                font-size: 4.7em;
+                font-weight: 400
+            }
+        }
+    }
+    
+    &-modal{
+       @include mixins.sizes(25rem, 100%);
+       @include mixins.flex-prop(center, center, column, 30px);
+       background-color: var(--color-18);
+       z-index: 2;
+
+        &-title{
+
+            h2{
+                @extend %h-lg-01;
+                text-align: center
+            }
+        }
+
+        &-form{
+            @include mixins.sizes(65%, auto);
+            @include mixins.flex-prop(center, center, column, 10px);
+
+            &-user, 
+            &-password{
+                width: 100%;
+                @include mixins.flex-prop(start, center, column, 5px);
+                padding-bottom: 30px;
+
+                label{
+                    @extend %p-xs-01;
+                }
+
+                input{
+                    width: 100%;
+                    @extend %p-xs-01;
+                    background-color: var(--color-01);
+                    padding: 7px 10px;
+                    border-radius: 10px;
+                    font-weight: 400;
+                    border: 2px solid var(--color-15);
+                    text-align: center;
+                    
+
+                    &:focus{
+                        border-color: var(--steel-ball-02);
+                        outline: none;    
+                    }
+                }
+
+                p{
+                    @extend %p-xs-02;
+                    color: var(--color-10);
+                    font-weight: 500;
+                }
+            }
+
+            &-btn{
+                @include mixins.flex-prop(center, center, null, 7px);
+
+                button{
+                        padding: 7px 20px;
+                        background-color: var(--color-06); 
+                        border-radius: 25px;
+                        border: none;
+                        @extend %p-sm-02;
+                        cursor: pointer;                       
+
+                    &:hover{
+                        background-color: var(--steel-ball-02);
+                    }
+                }
+            }
+        }
+
+        &-reminder{
+            
+            p{
+                @extend %p-sm;
+                text-align: center;
+
+                &:nth-child(2){
+                    @extend %p-xs-02;
+                    font-style: italic;
+                }
+            }
+
+            button{
+                background-color: transparent;
+                border: none;
+                @extend %h-small;
+                color: var(--color-10);
+                font-weight: 500;
+                cursor: pointer;
+            }
+        }
+    }
+
+    @include mixins.respond-to(md){
+        overflow: hidden;
+    }
+}

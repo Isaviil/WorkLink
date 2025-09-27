@@ -1,0 +1,53 @@
+
+@mixin null-check($prop, $value){
+    @if($value != null){
+        #{$prop}: $value;
+    }
+}
+
+@mixin flex-prop($justify: null, $align: null, $direction: null, $gap: null){
+    display: flex;
+    @include null-check("justify-content", $justify);
+    @include null-check("align-items", $align);
+    @include null-check("flex-direction", $direction);
+    @include null-check("gap", $gap)
+}
+
+@mixin sizes($w: null, $h: null, $m-w: null, $m-h: null){
+    @include null-check("width", $w);
+    @include null-check("height", $h);
+    @include null-check("max-width", $m-w);
+    @include null-check("max-height", $m-h);
+}
+
+@mixin f-prop($color: null, $size: null, $weight: null, $fam: null){
+    @include null-check("color", $color);
+    @include null-check("font-size", $size);
+    @include null-check("font-weight", $weight);
+    @include null-check("font-family", $fam);
+}
+
+    
+/*mixins for media*/
+@mixin respond-to($break){
+    @if ($break == sm){
+        @media (max-width: 576px){
+            @content;
+        }
+    }
+    @if ($break == md){
+        @media (max-width: 768px){
+            @content;
+        }
+    }
+    @if ($break == lg){
+        @media (max-width: 1024px){
+            @content;
+        }
+    }
+    @if ($break == xlg){
+        @media (max-width: 1460px){
+            @content;
+        }
+    }
+}

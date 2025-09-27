@@ -1,0 +1,79 @@
+@use '../../styles/mixins';
+@use '../../styles/placeholders';
+
+.hero{
+    @include mixins.sizes(100%, 60vh, null, 50rem);
+    min-height: 40rem;
+    @include mixins.flex-prop(center, center);
+    background: linear-gradient(270deg, var(--color-08), var(--color-09));
+    border-radius: 3.5rem;
+    overflow: hidden;
+
+    &-text{
+        @include mixins.flex-prop(center, center, column, 5px);
+
+        h2{
+            @extend %h-lg-04;
+            text-align: center;
+            font-family: "Bebas neue";
+            font-size: 4.5em;
+        }
+
+        h3{
+            @extend %h-lg-01;
+            text-align: center;
+        }
+
+        button{
+            background-color: var(--color-04);
+            border: none;
+            @extend %p-sm-02;
+            cursor: pointer;
+            padding: 5px 12px;
+            border-radius: 12px;
+        }
+    }
+
+    @include mixins.respond-to(lg){
+        height: 50vh;
+        max-height: 45rem;
+        min-height: 30rem;
+
+        &-text{
+
+            h2{
+                font-size: 4.1em;
+            }
+
+            h3{
+                font-size: 1.5em;
+            }
+
+            button{
+                font-size: .9em;
+            }
+        }
+    }
+
+    @include mixins.respond-to(md){
+        height: 40vh;
+        max-height: 40rem;
+        min-height: 25rem;
+        border-radius: 0px;
+
+        &-text{
+
+            h2{
+                font-size: 2.8em;
+            }
+
+            h3{
+                font-size: .9em;
+            }
+
+            button{
+                font-size: .8em;
+            }
+        }
+    }
+}

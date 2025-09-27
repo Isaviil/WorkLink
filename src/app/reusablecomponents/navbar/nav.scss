@@ -1,0 +1,108 @@
+@use '../../styles/mixins';
+@use '../../styles/placeholders';
+
+nav{
+    
+    @include mixins.sizes(100%, auto);
+    @include mixins.flex-prop(space-between, center);
+    padding-bottom: 15px;
+    position: relative;
+
+    .nav-left{
+        @include mixins.flex-prop(center, center, null, 5px);
+
+        h3{
+            @extend %h-md-02;
+            cursor: pointer;
+        }
+
+        &-btn{
+            background-color: transparent;
+            border: none;
+            color: var(--color-regular-text);
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+    }
+
+    .nav-right{
+
+        .bi-x-lg{
+            display: none;
+            
+        }
+
+        ul{
+            @include mixins.flex-prop(center, center, null, 25px);
+            li{
+                @extend %p-sm-02;
+                list-style: none;
+                cursor: pointer;
+
+                &:nth-last-child(1){
+                    background-color: var(--color-04);
+                    padding: 7px 7px;
+                    border-radius: 12px;
+                }
+            }
+        }
+    }
+    
+    .bi-list{
+        position: absolute;
+        display: none;
+    }
+
+    @include mixins.respond-to(md){
+
+        .nav-right{
+            opacity: 1;
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 100%;
+            backdrop-filter: blur(3px);
+            display: flex;
+            justify-content: end;
+            align-items: center;
+
+            .bi-x-lg{
+                opacity: 1;
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 10px;
+                color: var(--color-regular-text);
+                cursor: pointer;
+                font-size: 1.8em;
+                z-index: 2;
+            }
+
+
+            ul{
+                height: 100%;
+                width: 27rem;
+                flex-direction: column;
+                background-color: var(--color-18);
+
+                li{
+                    
+                    &:nth-last-child(1){
+                        background-color: transparent;
+                        padding: 0;
+                        color: var(--color-regular-text);
+                    }
+                }
+            }
+        }
+
+        .bi-list{
+            display: block;
+            right: 0;
+            color: var(--color-regular-text);
+            cursor: pointer;
+            font-size: 1.8em;            
+        }
+    }
+}

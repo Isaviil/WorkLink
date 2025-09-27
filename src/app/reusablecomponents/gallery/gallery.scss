@@ -1,0 +1,62 @@
+@use '../../styles/mixins';
+@use '../../styles/placeholders';
+
+.gallery-container{
+        @include mixins.sizes(100%, 100%);
+        @include mixins.flex-prop(space-evenly, center);
+        flex-wrap: wrap;
+        padding: 20px 10px;
+        background-color: var(--color-06);
+        position: relative;
+
+        &-empty{
+            @include mixins.flex-prop(center, center);
+            height: 400px;
+           
+            h2{
+                @extend %h-md-02;
+            }
+        }
+
+        &-upload{
+            position: absolute;
+            right: 0;
+            bottom: 100%;
+
+            .bi-images{
+                @extend %h-lg-01;
+                cursor: pointer
+            }
+        }
+
+        &-items{
+        @include mixins.sizes(31%, 40vh, null, 457px);
+        position: relative;
+        padding-bottom: 30px;
+
+        img{
+            @extend %fit-cover;
+            transition: .2s ease-in-out;
+
+            &:hover{
+                transform: scale(1.05);
+            }
+        }
+
+        p{
+            position: absolute;
+            bottom: 50%;
+            left: 25%;
+            opacity: 0;
+            @extend %p-sm;
+            transition: opacity .3s ease-in-out;
+            pointer-events: none;
+        }
+
+        &:hover{
+            p{
+                opacity: 1;
+            }
+        }
+    }
+}

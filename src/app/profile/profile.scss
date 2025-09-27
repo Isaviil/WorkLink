@@ -1,0 +1,141 @@
+@use '../styles/mixins';
+@use '../styles//placeholders';
+
+
+.profile{
+    @extend %main-container;
+    justify-content: start;
+
+    .isLoading{
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include mixins.sizes(100%, 100vh);
+        @include mixins.flex-prop(center, center, column);
+        min-width: 600px;
+        background-color: var(--color-01);
+
+        p{
+            @extend %h-lg-04;
+        }
+    }
+
+
+    &-me{
+        @include mixins.flex-prop(center, center, column, 45px);
+        @include mixins.sizes(100%, auto);
+        padding-top: 60px;
+
+        &-info{
+             @include mixins.flex-prop(space-evenly, center, null);
+             background-color: var(--color-06);
+             border-radius: 12px;
+             width: 100%;
+             max-width: 650px;
+             padding: 12px 5px;
+             position: relative;
+
+                .bi-pencil{
+                    position: absolute;
+                    top: 15px;
+                    right: 15px;
+                    color: var(--color-regular-text);
+                    font-size: 1.2em;
+                    cursor: pointer;
+                }
+
+            &-img{                
+                position: relative;
+                @include mixins.sizes(180px, 180px);
+
+                .bi-camera{
+                    position: absolute;
+                    bottom: 0;
+                    right: -10px;
+                    color: var(--color-regular-text);
+                    font-size: 2.1em;
+                    cursor: pointer;
+                }
+
+                img{
+                    border-radius: 50%;
+                    @extend %fit-cover;
+                }
+            }
+
+
+            &-data{  
+                width: 60%;
+             
+                h2{
+                    @extend %h-small;
+                    text-align: center;
+                    padding: 5px;
+                }
+
+                p{
+                    @extend %p-xs-03;
+                }
+            }
+            
+        }
+    
+        &-buttons{
+            
+            a{
+                text-decoration: none;
+                font-size: 3em;
+                color: var(--color-regular-text);
+                padding: 5px;
+            }
+        }
+
+        &-gallery{
+            @include mixins.sizes(100%, auto, 1250px);
+            border-radius: 12px;
+        }
+
+    }
+
+    @include mixins.respond-to(md){
+        overflow-x: hidden;
+
+        &-me{
+
+            &-info{
+                flex-direction: column;   
+                gap: 15px;
+
+
+                &-img{
+                    width: 165px;
+                    height: 165px;
+
+                    .bi-camera{
+                        right: -10px;
+                        top: 80%;
+                    }
+                }
+
+                &-data{
+                    display: flex;
+                    justify-content: center;
+                    flex-direction: column;
+                    align-items: center;
+                    width: 90%;
+
+                    p{
+                        text-align: center;
+                    }
+                }
+            }
+
+            &-buttons{
+                a{
+                    font-size: 2.1em;
+                }
+            }
+        }
+
+    }
+}
