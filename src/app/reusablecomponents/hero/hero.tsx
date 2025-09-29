@@ -10,15 +10,15 @@ export default function Hero(){
         <div className='hero'>
             <div className="hero-text">
                 <h2>
-                    El profesional que buscas está aquí!
+                    Profesionales a tu disposición.
                 </h2>
 
                 <h3>
-                    Tan solo a un click de distancia. Tú decides!
+                    Conéctate en segundos.
                 </h3>
 
                 <button onClick={()=> router.push("/professionals")}>
-                    Ver más
+                    Buscar
                 </button>
             </div>
         </div>

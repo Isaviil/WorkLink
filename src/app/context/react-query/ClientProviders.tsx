@@ -21,7 +21,6 @@ export default function ClientProviders({children} : childrenType){
                         {children}
                     </main>
                 </ThemeProv>
-                <ReactQueryDevtools initialIsOpen={false}/>
             </QueryClientProvider>
         </SessionProvider>
     )

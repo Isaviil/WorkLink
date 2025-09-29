@@ -1,0 +1,37 @@
+@use '../../styles/mixins';
+@use '../../styles//placeholders';
+
+.footer-container{
+    background-color: var(--footer-color-01);
+    @include mixins.sizes(100%, auto);
+    @include mixins.flex-prop(center, center, column, 5px);
+    padding: 40px 0px;
+
+    p{
+        @extend %p-xs-01;
+        font-weight: 400;
+    }
+
+    &-icons{
+        @include mixins.flex-prop(center, center, null, 15px);
+
+        a{
+            font-style: none;
+            i{
+                @extend %h-lg-04;
+            }
+        }
+        
+    }
+
+
+    @include mixins.respond-to(md){
+        padding: 25px 0px;
+
+        p{
+            font-size: .74em;
+            text-align: center;
+        }
+    }
+
+}

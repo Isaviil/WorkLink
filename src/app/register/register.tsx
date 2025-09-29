@@ -95,8 +95,7 @@ export default function Register(){
 
             <Navbar/>
 
-            <h2>Regístrate</h2>
-            <h3>Considera que solo se aceptarán a los profesionales que trabajen con nosotros.</h3>
+            <h2>Regístrate</h2>            
 
         <form onSubmit={handleSubmit}>
             {serverMsg?.error && <p className="error-message">{serverMsg.error}</p>}

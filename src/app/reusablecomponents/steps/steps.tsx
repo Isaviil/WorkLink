@@ -1,13 +1,31 @@
 'use client';
+import { useEffect, useRef } from 'react';
 import './steps.scss';
+import gsap from 'gsap';
 
 export default function Steps(){
+
+    //const ref
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    
+    useEffect(()=>{
+        const items = gsap.utils.toArray(".steps-container-element");
+
+        if (containerRef.current){
+            gsap.fromTo(items, { x: 100, opacity: 0},
+            {x: 0, opacity: 1, duration: .5, stagger: .5, delay: .7 }
+            );
+        }
+
+    }, [])
+
 
     return (
         <div className="steps">
             <h2>Es tan sencillo!</h2>
 
-            <div className="steps-container">
+            <div className="steps-container" ref={containerRef}>
                 <div className="steps-container-element">
                     <i className="bi bi-1-circle"></i>
                     <h3>Revisa nuestra lista</h3>

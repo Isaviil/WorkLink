@@ -5,6 +5,10 @@ import './homepage.scss';
 import gsap from 'gsap';
 import { useRef, useEffect } from 'react';
 import Navbar from '../reusablecomponents/navbar/nav';
+import Homeprofessional from '../homeprof/homeprof';
+import Homelocation from '../homelocations/homeloc';
+import FooterPage from '../reusablecomponents/footer/foot';
+import Homecustomers from '../homecustomers/homecustomers';
 
 
 export default function Homepage(){
@@ -28,6 +32,10 @@ export default function Homepage(){
             <Navbar/>
             <Hero/>
             <Steps/>
+            <Homeprofessional/>
+            <Homelocation/>
+            <Homecustomers/>
+            <FooterPage/>
         </section>
     )
 }

@@ -2,5 +2,6 @@
 
 .home{
     @include mixins.sizes(100%, auto);
-    @include mixins.flex-prop(center, center, column, 70px);
+    @include mixins.flex-prop(center, center, column, 60px);
+
 }

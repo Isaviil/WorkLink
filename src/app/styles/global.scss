@@ -82,12 +82,18 @@ body{
     --color-16: #ebeaecec;
     --color-17: #fffb11;
     --color-18: #231a33f8;
+    --color-19: rgb(111 35 35 / 52%);
+    --color-20: #131a29b3;
+    --color-21: rgb(2 13 33 / 45%);
 
 
     --footer-color-01: #0d0f11e7; //Footer
     --color-full-white: white;
     --steel-ball: rgb(134, 29, 99);
     --steel-ball-02: rgb(26, 75, 167); 
+
+
+    //494b4dba;
 } 
 
 
@@ -112,7 +118,9 @@ body[data-theme= "light"]{
     --color-16: #f1f1f1d2;
     --color-17: #435811;
     --color-18: #d3d887f6;
-    // --color-15: #949674d7;
+    --color-19: rgb(255 240 136 / 60%);
+
+    --color-21: rgb(255 236 151 / 45%);
 
     --footer-color-01: #d6e7fc73;
     --steel-ball: #facf59;

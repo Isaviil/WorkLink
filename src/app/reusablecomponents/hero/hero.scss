@@ -2,10 +2,10 @@
 @use '../../styles/placeholders';
 
 .hero{
-    @include mixins.sizes(100%, 60vh, null, 50rem);
+    @include mixins.sizes(100%, 65vh, null, 50rem);
     min-height: 40rem;
     @include mixins.flex-prop(center, center);
-    background: linear-gradient(270deg, var(--color-08), var(--color-09));
+    background: linear-gradient(270deg, var(--color-08), var(--color-19));
     border-radius: 3.5rem;
     overflow: hidden;
 

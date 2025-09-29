@@ -1,0 +1,131 @@
+@use '../styles/mixins';
+@use '../styles//placeholders';
+
+
+    .homelocation-worker{
+        @include mixins.sizes(100%, 70vh);
+        @include mixins.flex-prop(space-evenly, center, column); 
+        min-height: 780px;
+
+            &-loading{
+                @include mixins.sizes(100%, 100%);
+                @include mixins.flex-prop(center, center);
+
+                h3{
+                    @extend %h-lg-01;
+                }
+            }
+
+        h2{
+            @extend %h-lg-04;
+            font-size: 4em;
+            font-family: "Bebas neue";
+            text-align: center
+        }
+
+        &-display{
+            @include mixins.flex-prop(space-evenly, center);
+            @include mixins.sizes(100%, 65%);
+
+            &-element{
+                @include mixins.flex-prop(center, center, column, 10px);
+                @include mixins.sizes(27%, 80%, 750px);
+
+                &-img{
+                    @include mixins.sizes(100%, 87%);
+                    @include mixins.flex-prop(center, center);
+                    background: linear-gradient(15deg, var(--color-19), var(--color-08));
+                    cursor: pointer;
+
+                    img{
+                        object-fit: cover;
+                        width: 80%;
+                        height: 90%;
+                        transition: .35s ease-in-out;
+
+                        &:hover{
+                            transform: scale(1.05);
+                        }
+                    }
+                }
+
+                &-text{
+                    @include mixins.sizes(100%, auto);
+                    h3{
+                        @extend %h-md-02;
+                        text-align: center;
+                        font-weight: 400;
+                    }
+
+                    p{
+                        @extend %p-sm-01;
+                        text-align: center;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+
+                        &:last-child{
+                            @extend %p-xs-03;
+                        }
+                    }
+                }
+
+                button{
+                    background-color: var(--color-15);
+                    border: none;
+                    color: var(--color-regular-text);
+                    cursor: pointer;
+                    border-radius: 7px;
+                    padding: 7px 19px;
+                }
+            }
+        }
+
+
+
+        @include mixins.respond-to(md){
+            min-height: unset;
+            height: fit-content;
+            gap: 20px;
+            
+            h2{
+                font-size: 3.4em;
+            }
+
+            &-display{
+                flex-direction: column;
+                max-width: unset;
+                gap: 40px;
+
+                &-element{
+                    width: 90%;
+
+                    &-img{
+                        padding: 2rem;
+
+                        img{
+                            width: 90%;
+                            height: 90%;
+                        }
+                    }
+
+                    &-text{
+                        
+                        h3{
+                            font-size: 1.4em;
+                        }
+
+                        p{
+                            font-size: .9em;
+
+                            &:last-child{
+                                font-size: .75em;
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+
