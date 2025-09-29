@@ -117,6 +117,21 @@ export default function Profile({id}:idType){
         }
     }, [])
 
+
+
+    //each item
+    useEffect(()=>{
+        if (data?.result && data.result.galleries.length>0){
+
+            const galleryItemsArray = gsap.utils.toArray(".gallery-container-items");
+
+            const tl = gsap.timeline();
+
+            tl.fromTo(galleryItemsArray, {opacity: 0}, {opacity: 1, stagger: .2, ease: "power2.out"})
+
+        }
+    }, [data?.result.galleries.length])
+
     
     
     return (
@@ -172,7 +187,7 @@ export default function Profile({id}:idType){
                                 <a href={`https://wa.me/${data.result.phone}`} target="_blank" rel="noopener noreferrer"><i className="bi bi-whatsapp"></i></a>
                             </div>
 
-                            <div className="profile-me-gallery">
+                            <div className="profile-me-gallery">                              
                                 <Gallery galleries={data.result.galleries} canEdit={canEdit}/>
                             </div>
                         </div>                    

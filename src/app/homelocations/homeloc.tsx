@@ -3,6 +3,10 @@ import { useQuery } from "@tanstack/react-query";
 import "./homeloc.scss";
 import { Decimal } from "@prisma/client/runtime/library";
 import { useRouter } from "next/navigation";
+import { useEffect, useRef } from "react";
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 
     type galleryType = {
@@ -51,9 +55,39 @@ export default function Homelocation(){
     });
 
 
+
+    //refs
+    const locationRef = useRef<HTMLDivElement>(null);
+   //const dispRef = useRef<HTMLDivElement>(null);
+
+    useEffect(()=> {
+
+        if (data?.result && data?.result.length>0){
+
+            const displayArray = gsap.utils.toArray(".homelocation-worker-display-element")
+
+            const tl = gsap.timeline(
+                {
+                    scrollTrigger: {
+                        trigger: locationRef.current,
+                        start: "top 50%",
+                        end: "top 50%"
+                    }
+                }
+            )
+
+           tl.fromTo(displayArray, {opacity: 0, xPercent: 50}, {opacity: 1, xPercent: 0, stagger: .7, ease: "power2.out"})
+        }
+
+    }, [data?.result])
+    
+
+
+
+
     return (
 
-        <div className="homelocation-worker">
+        <div className="homelocation-worker" ref={locationRef}>
             <h2>Algunos de nuestros miembros</h2>
 
             {isLoading && <div className="homelocation-worker-loading"><h3>Cargando...</h3></div>}

@@ -10,11 +10,11 @@ export default function Hero(){
         <div className='hero'>
             <div className="hero-text">
                 <h2>
-                    Profesionales a tu disposición.
+                   Buscas un profesional?
                 </h2>
 
                 <h3>
-                    Conéctate en segundos.
+                    Encuéntralo en segundos.
                 </h3>
 
                 <button onClick={()=> router.push("/professionals")}>

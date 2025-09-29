@@ -6,6 +6,7 @@
     @include mixins.flex-prop(space-evenly, center);
     min-height: 525px;
     background: linear-gradient(270deg, var(--color-19), var(--color-08));
+    overflow: hidden;
 
     &-text{
         @include mixins.sizes(50%, 100%);
