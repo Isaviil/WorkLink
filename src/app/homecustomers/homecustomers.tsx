@@ -60,7 +60,7 @@ export default function Homecustomers(){
         <div className="homecustomer" ref={commentsRef}>
             <div className="homecustomer-text">                
                 <h2 ref={h2ref}>Nuestros clientes están satisfechos</h2>
-                <p ref={pRef}>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae, tenetur?</p>
+                <p ref={pRef}>Descubre lo que opinan quienes ya confiaron en nosotros.</p>
             </div>
 
             <div className="homecustomer-comments">

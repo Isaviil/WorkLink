@@ -8,6 +8,7 @@
     position: relative;
     padding: 40px;
     box-shadow: 0 0 50px var(--color-07);
+    overflow: hidden;
 
     &-text{
         @include mixins.sizes(100%, 100%);
