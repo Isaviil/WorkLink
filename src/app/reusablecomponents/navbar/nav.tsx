@@ -108,7 +108,7 @@ export default function Navbar(){
         <nav>
 
             <div className="nav-left">
-                <h3 onClick={()=> router.push("/homePage")}>Logo</h3>
+                <h3 onClick={()=> router.push("/homePage")}>Worklink</h3>
 
                 <button className='nav-left-btn' onClick={displayTheme}>
                     {

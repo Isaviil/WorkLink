@@ -8,6 +8,7 @@ import { useState, useRef, useEffect } from 'react';
 import UploadImage from "../reusablecomponents/uploadImg/uploading";
 import Gallery from '../reusablecomponents/gallery/gallery';
 import gsap from 'gsap';
+import FooterPage from '../reusablecomponents/footer/foot';
 
 
 type idType = {
@@ -193,6 +194,10 @@ export default function Profile({id}:idType){
                         </div>                    
                     </>
             }
+
+            <div className="footer-container">
+                <FooterPage/> 
+            </div>
 
         </div>
     )
