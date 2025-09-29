@@ -13,7 +13,7 @@
         @include mixins.sizes(100%, 100vh);
         @include mixins.flex-prop(center, center, column);
         min-width: 600px;
-        background-color: var(--color-01);
+        background-color: var(--color-black);
 
         p{
             @extend %h-lg-04;
@@ -24,7 +24,7 @@
     &-me{
         @include mixins.flex-prop(center, center, column, 45px);
         @include mixins.sizes(100%, auto);
-        padding-top: 60px;
+        padding: 60px 0px;
 
         &-info{
              @include mixins.flex-prop(space-evenly, center, null);
@@ -94,6 +94,8 @@
             @include mixins.sizes(100%, auto, 1250px);
             border-radius: 12px;
         }
+
+
 
     }
 

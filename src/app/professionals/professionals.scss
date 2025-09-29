@@ -9,7 +9,7 @@
 
     &-display{
         @include mixins.flex-prop(space-between, center);
-        padding-top: 70px;
+        padding: 70px 0px;
 
         &-config{
             @include mixins.sizes(auto, 100%);
@@ -28,7 +28,7 @@
                 @include mixins.sizes(100%, 100vh);
                 @include mixins.flex-prop(center, center, column);
                 min-width: 600px;
-                background-color: var(--color-01);
+                background-color: var(--color-black);
 
                 p{
                     @extend %h-lg-04;

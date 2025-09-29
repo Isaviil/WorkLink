@@ -154,7 +154,6 @@ export default function Login(){
                         })
                         
                     }}>Crea tu cuenta</button></p>
-                    <p>Solo se aceptarán las cuentas de los trabajadores.</p>
                 </div>
 
             </div>

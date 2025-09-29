@@ -5,6 +5,7 @@ import './professionals.scss';
 import { useRouter } from 'next/navigation';
 import FilterLoc from '../reusablecomponents/filterLocation/filterlocation';
 import { useState } from 'react';
+import FooterPage from '../reusablecomponents/footer/foot';
 
 export default function Professionals(){
 

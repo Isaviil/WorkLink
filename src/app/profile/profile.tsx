@@ -195,10 +195,7 @@ export default function Profile({id}:idType){
                     </>
             }
 
-            <div className="footer-container">
-                <FooterPage/> 
-            </div>
-
+            <FooterPage/> 
         </div>
     )
 }
