@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { SessionProvider } from "next-auth/react";
 import { ReactNode } from "react";
 import ThemeProv from "../theme/themeProvider";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+//import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 
 interface childrenType{
@@ -20,7 +20,7 @@ export default function ClientProviders({children} : childrenType){
                     <main className="app-container">                    
                         {children}
                     </main>
-                </ThemeProv>
+                </ThemeProv>                
             </QueryClientProvider>
         </SessionProvider>
     )

@@ -1,0 +1,44 @@
+@use '../../styles/mixins';
+@use '../../styles/placeholders';
+
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--color-21) inset !important;
+  -webkit-text-fill-color: var(--color-05) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
+.lupa{
+    position: relative;
+    @include mixins.flex-prop(center, center);
+    @include mixins.sizes(100%, 1.9em);
+
+    input{
+        width: 99%;
+        height: 100%;
+        background-color: var(--color-18);
+        border: none;
+        padding: 5px 8px;
+        border-radius: 5px;
+        color: var(--color-regular-text);
+        @extend %p-sm-01;
+        font-weight: 400;
+    }
+
+    .bi-search{
+        position: absolute;
+        right: 20px;
+        color: white;
+        font-size: 1.1em;
+    }
+
+    @include mixins.respond-to(sm){
+
+        input{
+            
+        }
+    }
+}

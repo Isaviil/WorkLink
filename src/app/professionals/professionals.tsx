@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import FilterLoc from '../reusablecomponents/filterLocation/filterlocation';
 import { useState } from 'react';
 import FooterPage from '../reusablecomponents/footer/foot';
+import Lupa from '../reusablecomponents/lupa/lupa';
 
 export default function Professionals(){
 
@@ -75,30 +76,39 @@ export default function Professionals(){
                 </div>                
                 
                 <div className="professionals-display-elements">
+                    
                     {
                     isLoading && 
-                    <div className='professionals-display-elements-isLoading'><p>Cargando...</p></div>}
-
-                    {
-                        filteredProfessionals?.map((x, i) => (
-                            <div className='professionals-display-elements-user' key={i}>
-                                <div className="professionals-display-elements-user-img">
-                                    <img src={x.profile_picture || "/images/av01.png"} />
-                                </div>
-
-                                <div className="professionals-display-elements-user-text">
-                                    <h2>{x.name}</h2>
-                                    <p>{x.city?? "Sin ciudad"}</p>
-                                    <p>{x.district?? "Sin distrito"}</p>
-                                    <p>Desde S/. {x.price?? "0"}</p>
-                                    <button onClick={() => router.push(`/profile/${x.id}`)}>Ver más</button>
-                                </div>
-                            </div>
-                        ))
+                    <div className='professionals-display-elements-isLoading'><p>Cargando...</p></div>
                     }
+
+                    <Lupa/>
+
+                    <div className="professionals-display-elements-container">
+                        {
+                            filteredProfessionals?.map((x, i) => (
+                                <div className='professionals-display-elements-container-user' key={i}>
+                                    <div className="professionals-display-elements-container-user-img">
+                                        <img src={x.profile_picture || "/images/av01.png"} />
+                                    </div>
+
+                                    <div className="professionals-display-elements-container-user-text">
+                                        <h2>{x.name}</h2>
+                                        <p>{x.city?? "Sin ciudad"}</p>
+                                        <p>{x.district?? "Sin distrito"}</p>
+                                        <p>Desde S/. {x.price?? "0"}</p>
+                                        <button onClick={() => router.push(`/profile/${x.id}`)}>Ver más</button>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+
                 </div>
             </div>
 
+
+            <FooterPage/>
         </div>
     )
 }

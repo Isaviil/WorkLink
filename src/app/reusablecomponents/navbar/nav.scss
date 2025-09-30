@@ -5,7 +5,7 @@ nav{
     
     @include mixins.sizes(100%, auto);
     @include mixins.flex-prop(space-between, center);
-    padding-bottom: 15px;
+    padding-top: 15px;
     position: relative;
 
     .nav-left{
@@ -53,7 +53,7 @@ nav{
         display: none;
     }
 
-    @include mixins.respond-to(md){
+    @include mixins.respond-to(md){        
 
         .nav-right{
             opacity: 1;
@@ -106,4 +106,5 @@ nav{
             font-size: 1.8em;            
         }
     }
+
 }

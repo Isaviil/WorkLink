@@ -4,7 +4,7 @@
 
 .filter-location{
     @include mixins.sizes(100%, 100%);
-    @include mixins.flex-prop(center, center, column, 4px);
+    @include mixins.flex-prop(center, null, column, 4px);
 
     &-loading{
 
@@ -12,17 +12,42 @@
 
     h2{
         @extend %h-md-02;
-        font-weight: 500
+        font-weight: 500;
     }
 
     &-options{
-        @include mixins.flex-prop(center, center, column, 6px);
+        @include mixins.flex-prop(start, null, column, 6px);
 
         button{
             @extend %p-sm;
             background-color: transparent;
             border: none;
             cursor: pointer;
+            text-align: start;
+        }
+    }
+
+    @include mixins.respond-to(xlg){
+        align-items: center;
+
+        &-options{
+
+            button{
+                text-align: center;
+            }
+        }
+    }
+
+    @include mixins.respond-to(sm){
+        h2{
+            font-size: 1.2em;
+        }
+
+        &-options{
+
+            button{
+                font-size: .75em;
+            }
         }
     }
 }
