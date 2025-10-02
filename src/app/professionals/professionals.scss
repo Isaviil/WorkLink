@@ -27,7 +27,7 @@
                 position: absolute;
                 top: 0;
                 left: 0;
-                @include mixins.sizes(100%, 100vh);
+                @include mixins.sizes(100%, 100%);
                 @include mixins.flex-prop(center, center, column);
                 min-width: 600px;
                 background-color: var(--color-black);

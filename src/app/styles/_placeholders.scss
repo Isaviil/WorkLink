@@ -40,6 +40,14 @@
     @include mixins.f-prop(var(--color-regular-text), 2.48em, 350, "Montserrat");
 }
 
+%h-lg-05{
+    @include mixins.f-prop(var(--color-regular-text), 4.2em, 500, "Montserrat");
+}
+
+%h-lg-06{
+    @include mixins.f-prop(var(--color-regular-text), 2.5em, 500, "Montserrat");
+}
+
 %h-md-02{
     @include mixins.f-prop(var(--color-regular-text), 1.45em, 350, "Montserrat");
 }

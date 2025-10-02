@@ -3,8 +3,8 @@ import "./register.scss";
 import gsap from "gsap";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import Navbar from "../reusablecomponents/navbar/nav";
 import { useMutation } from "@tanstack/react-query";
+import { Dispatch, SetStateAction } from "react";
 
 
 
@@ -15,8 +15,11 @@ type mutaType = {
     password: string
 }
 
+type changeStateType = {
+    changeState: Dispatch<SetStateAction<boolean>>;
+}
 
-export default function Register(){
+export default function Register({changeState}: changeStateType){
 
     //ref
     const registerRef = useRef<HTMLDivElement>(null);
@@ -67,9 +70,14 @@ export default function Register(){
         },
         onSuccess: (data)=>{
             setServerMsg(data);
-              gsap.delayedCall(1.5, () => {
-                    router.push("/loginPage");
-                });
+            gsap.fromTo(registerRef.current, {
+                opacity: 1
+            }, {
+                opacity: 0, duration: 1.2, ease: "power2.out", delay: 1.5,
+                onComplete: ()=> {
+                    changeState(false);
+                }
+            })
         }
     });
     
@@ -90,45 +98,66 @@ export default function Register(){
     }
 
 
+    //registerRef opacity 0 -> 1
+    useEffect(()=>{
+
+        if (registerRef.current){
+            gsap.fromTo(registerRef.current, {opacity: 0}, {opacity: 1, duration: 1.5, ease: "power2.out"})
+        }
+
+    }, [])
+
+
+
     return (
         <div className="register" ref={registerRef}>
+            <div className="register-container">
+                <div className="register-container-text">
+                    <h2>WorkLink</h2>
+                    <h3>El mundo Está Esperando</h3>
+                </div>
 
-            <Navbar/>
+                <div className="register-container-form">
 
-            <h2>Regístrate</h2>            
+                    <h2>Regístrate</h2>
 
-        <form onSubmit={handleSubmit}>
-            {serverMsg?.error && <p className="error-message">{serverMsg.error}</p>}
+                    <form onSubmit={handleSubmit} noValidate>
 
-            <div className="form-element">
-                <label htmlFor="name">Nombre:</label>
-                <input id="name" type="text" name="name" />                
+                        <div className="form-element">
+                        <label htmlFor="name">Nombre:</label>
+                        <input id="name" type="text" name="name" required/>
+                        </div>
+
+                        <div className="form-element">
+                        <label htmlFor="lastname">Apellido:</label>
+                        <input id="lastname" type="text" name="lastname" required/>
+                        </div>
+
+                        <div className="form-element">
+                        <label htmlFor="email">Correo electrónico:</label>
+                        <input id="email" type="email" name="email" required/>
+                        </div>
+
+                        <div className="form-element">
+                        <label htmlFor="password">Contraseña:</label>
+                        <input id="password" type="password" name="password" required/>
+                        </div>
+
+                        <div className="buttons">
+                            <button type="button" disabled={muta.isPending}
+                            onClick={()=> {
+                                gsap.fromTo(registerRef.current, {opacity: 1}, {opacity: 0, duration: 1, ease: "power2.out", onComplete: ()=> {
+                                    changeState(false)
+                                }})
+                            }}>Regresar</button>
+                            <button> {muta.isPending ? "Enviando..." : "Enviar"}</button>
+                        </div>
+                    </form>
+
+                    {serverMsg?.error && <div className="error-msg"><p>{serverMsg.error}</p></div>}
+                    {serverMsg?.message && <div className="error-msg"><p>{serverMsg.message}</p></div>}
+                </div>
             </div>
-
-            <div className="form-element">
-                <label htmlFor="lastname">Apellido:</label>
-                <input id="lastname" type="text" name="lastname" />               
-            </div>
-
-            <div className="form-element">
-                <label htmlFor="email">Correo electrónico:</label>
-                <input id="email" type="email" name="email" />                
-            </div>
-
-            <div className="form-element">
-                <label htmlFor="password">Contraseña:</label>
-                <input id="password" type="password" name="password" />                
-            </div>
-
-            <div className="buttons">
-                <button type="button" onClick={()=> router.push("/loginPage")}>Regresar</button>
-                <button type="submit" disabled={muta.isPending}>
-                    {muta.isPending ? "Creando..." : "Crear"}
-                </button>
-            </div>
-        </form>
-
-        {serverMsg?.message && <p className="register-sent">{serverMsg.message}</p>}
         </div>
     )
 }

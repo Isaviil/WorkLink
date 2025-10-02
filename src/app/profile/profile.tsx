@@ -55,6 +55,8 @@ export default function Profile({id}:idType){
     //Si se envía un id al dumb component, se usará eso; si no, la sesión.
     const profileId = id?? session?.user.id;
 
+
+
     //Get method
     const {data, isLoading} = useQuery<queryType>({
         queryKey: ["perfil", profileId],
@@ -93,14 +95,16 @@ export default function Profile({id}:idType){
 
     //Editar
     const canEdit = Number(session?.user?.id) === data?.result.id;
-
-
     const [editar, setEditar] = useState(false);
+
+
+
 
     //state para el editar
     const toggleEdit = () =>{
         setEditar(x => !x)
     }
+
 
 
     //container ref
@@ -120,20 +124,45 @@ export default function Profile({id}:idType){
 
 
 
-    //each item
-    useEffect(()=>{
-        if (data?.result && data.result.galleries.length>0){
 
+    //refs const
+    const profileMeRef = useRef<HTMLDivElement>(null);
+    const descriptionRef = useRef<HTMLDivElement>(null);
+    const galleryRef = useRef<HTMLDivElement>(null);
+
+
+
+
+    //gallery animation
+    useEffect(()=>{
+    
+        if (data?.result){
+            const tl = gsap.timeline();
             const galleryItemsArray = gsap.utils.toArray(".gallery-container-items");
 
-            const tl = gsap.timeline();
+            if (profileMeRef.current){
+                tl.fromTo(profileMeRef.current, {opacity: 0, y: -30}, {opacity:1, y: 0, duration: .6, ease: "power2.out"})
+            }
 
-            tl.fromTo(galleryItemsArray, {opacity: 0}, {opacity: 1, stagger: .2, ease: "power2.out"})
+            if (descriptionRef.current){
+                tl.fromTo(descriptionRef.current, {opacity: 0, y: -30}, {opacity:1, y: 0, duration: .5, ease: "power2.out"})
+            }
+
+            
+            if (galleryRef.current){
+                tl.fromTo(galleryRef.current, {opacity: 0, y: -30}, {opacity:1, y: 0, duration: .4, ease: "power2.out"})
+            }
+
+
+            if (data.result.galleries.length>0){
+                tl.fromTo(galleryItemsArray, {opacity: 0}, {opacity: 1, stagger: .2, ease: "power2.out"})
+            }            
 
         }
     }, [data?.result.galleries.length])
 
-    
+
+
     
     return (
         <div className="profile" ref={profileRef}>
@@ -147,7 +176,7 @@ export default function Profile({id}:idType){
                         <Navbar/>
                         <div className="profile-me">
 
-                            <div className="profile-me-info">
+                            <div className="profile-me-info" ref={profileMeRef}>
                                 {
                                     editar && 
                                         <Edit info={{
@@ -175,20 +204,38 @@ export default function Profile({id}:idType){
 
                                 <div className="profile-me-info-data">
                                     <h2>{data.result.name} {data.result.lastname}</h2>
-                                    <p>{data.result.city}</p>   
-                                    <p>{data.result.district}</p>
-                                    <p>{data.result.description}</p>
-                                    <p>Precios desde {data.result.price?.toString()} soles</p>
+                                    <p>{data.result.city} - {data.result.district}</p>   
+                                    
+                                    <p>{
+                                        data.result.price? `Precios desde ${data.result.price?.toString()} soles`: "Aún no hay nada aquí"
+                                        }</p>
                                     {canEdit && <i onClick={toggleEdit} className="bi bi-pencil"></i>}
+
+                                    
+                                    <div className="profile-me-info-data-buttons">
+                                        {
+                                        data.result.maps_url && 
+                                        <a href={data.result.maps_url?? ""} target="_blank" rel="noopener noreferrer"><i className="bi bi-geo-alt-fill"></i></a>
+                                        }
+                                        {
+                                        data.result.phone &&
+                                        <a href={`https://wa.me/${data.result.phone}`} target="_blank" rel="noopener noreferrer"><i className="bi bi-whatsapp"></i></a>
+                                        }
+                                    </div>
                                 </div>                    
                             </div>
 
-                            <div className="profile-me-buttons">
-                                <a href={data.result.maps_url?? ""} target="_blank" rel="noopener noreferrer"><i className="bi bi-geo-alt-fill"></i></a>
-                                <a href={`https://wa.me/${data.result.phone}`} target="_blank" rel="noopener noreferrer"><i className="bi bi-whatsapp"></i></a>
-                            </div>
+                           {
+                            data.result.description &&
+                                <div className="profile-me-description" ref={descriptionRef}>
+                                    <h3>Sobre mí</h3>
+                                    <p>{data.result.description}</p>
+                                </div>
+                           }
 
-                            <div className="profile-me-gallery">                              
+
+                            <div className="profile-me-gallery" ref={galleryRef}>    
+                                <h3>Galleria</h3>                          
                                 <Gallery galleries={data.result.galleries} canEdit={canEdit}/>
                             </div>
                         </div>                    
@@ -199,3 +246,5 @@ export default function Profile({id}:idType){
         </div>
     )
 }
+
+//<p>{data.result.description}</p>

@@ -17,7 +17,7 @@ export default function ClientProviders({children} : childrenType){
         <SessionProvider>
             <QueryClientProvider client={queryClient}>
                 <ThemeProv>
-                    <main className="app-container">                    
+                    <main className="app-container">                
                         {children}
                     </main>
                 </ThemeProv>                

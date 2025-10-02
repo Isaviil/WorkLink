@@ -1,45 +1,72 @@
 @use '../../styles/mixins';
 @use '../../styles/placeholders';
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px var(--color-06) inset !important;
+  -webkit-text-fill-color: var(--color-regular-text) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+
 .edit{
     position: absolute;
     right: 0;
     top: 20%;
     z-index: 2;
     
-    @include mixins.sizes(60%, auto, 247px);
-    background-color: var(--color-06);
-    padding: 10px 20px;
+    @include mixins.sizes(100%, auto);
+    background-color: var(--color-02);
+    padding: 10px 5px;
     
 
     &-fields{
-        @include mixins.flex-prop(center, center, column, 5px);
+        @include mixins.flex-prop(space-evenly, center, null, 5px);
+        flex-wrap: wrap;
         max-height: 500px;
 
-        label{
-            @extend %p-xs-02;
-        }
+        &-element{
+            @include mixins.flex-prop(center, center, column, 5px);
+            @include mixins.sizes(100%, auto, 210px);
 
-        input{
-            width: 100%;
-            @extend %p-xs-02;
-            background-color: var(--color-09);
-            padding: 2px 3px;
-            border-radius: 10px;
-            font-weight: 500;
-            border: 2px solid var(--color-07);
-            text-align: center;
+            label{
+                @extend %p-xs-02;
+                font-weight: 400;
             }
 
-        textArea{
-            width: 100%;
-            @extend %p-xs-02;
-            background-color: var(--color-09);
-            border-radius: 10px;
-            padding: 2px 3px;
-            font-weight: 500;
-            border: 2px solid var(--color-07);
-            text-align: center
+            input{
+                width: 100%;
+                @extend %p-xs-02;
+                background-color: var(--color-24);
+                padding: 4px 3px;
+                border-radius: 7px;
+                font-weight: 500;
+                border: 2px solid var(--color-07);
+                text-align: center;
+            }
+        }
+
+        &-area{
+            @include mixins.sizes(95%, auto);
+            @include mixins.flex-prop(center, center, column, 4px);            
+
+            label{
+                @extend %p-xs-02;
+                font-weight: 400;
+            }
+
+            textArea{
+                width: 100%;     
+                min-height: 75px;           
+                @extend %p-xs-02;
+                background-color: var(--color-24);
+                border-radius: 7px;
+                padding: 4px 4px;
+                font-weight: 400;
+                border: 2px solid var(--color-07);
+                text-align: center
+            }
         }
     }
 
@@ -48,7 +75,7 @@
         padding: 15px 0px;
 
         button{
-            background-color: var(--color-09);
+            background-color: var(--color-04);
             border-radius: 5px;
             border: none;
             @extend %p-xs-01;
@@ -65,7 +92,7 @@
     }
 
     @include mixins.respond-to(md){
-        width: 60%;
+        
         top: 11%;
         min-width: 320px;
     }
@@ -74,6 +101,11 @@
         width: 100%;
         top: 11%;
         min-width: unset;
-        max-width: 350px;
+
+        &-fields{
+            flex-direction: column;
+            flex-wrap: nowrap;
+            max-height: unset;
+        }
     }
 }

@@ -6,7 +6,8 @@
         @include mixins.flex-prop(space-evenly, center);
         flex-wrap: wrap;
         padding: 20px 10px;
-        background-color: var(--color-06);
+        background-color: var(--color-25);
+        border-radius: 12px;
         position: relative;
 
         &-empty{

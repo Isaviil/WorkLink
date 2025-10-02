@@ -14,6 +14,7 @@
         @include mixins.flex-prop(center, center, column);
         min-width: 600px;
         background-color: var(--color-black);
+        z-index: 10;
 
         p{
             @extend %h-lg-04;
@@ -28,18 +29,19 @@
 
         &-info{
              @include mixins.flex-prop(space-evenly, center, null);
-             background-color: var(--color-06);
+             background-color: var(--color-25);
              border-radius: 12px;
              width: 100%;
-             max-width: 650px;
+             max-width: 570px;
              padding: 12px 5px;
              position: relative;
+             box-shadow: 0 0 30px var(--color-15);
 
                 .bi-pencil{
                     position: absolute;
                     top: 15px;
                     right: 15px;
-                    color: var(--color-regular-text);
+                    color: white;
                     font-size: 1.2em;
                     cursor: pointer;
                 }
@@ -52,7 +54,7 @@
                     position: absolute;
                     bottom: 0;
                     right: -10px;
-                    color: var(--color-regular-text);
+                    color: white;
                     font-size: 2.1em;
                     cursor: pointer;
                 }
@@ -65,32 +67,57 @@
 
 
             &-data{  
-                width: 60%;
+                @include mixins.flex-prop(null, start, column, 3px);
+                width: 40%;
              
                 h2{
-                    @extend %h-small;
-                    text-align: center;
-                    padding: 5px;
+                    @extend %h-md-03;   
+                    color: white;
+                    font-weight: 500                                     
                 }
 
                 p{
                     @extend %p-xs-03;
+                    color: white;
+                }
+
+                &-buttons{
+                    @include mixins.flex-prop(null, start, null, 3px);
+            
+                    a{
+                        text-decoration: none;
+                        font-size: 1.5em;
+                        
+                        .bi-geo-alt-fill{
+                            color: var(--color-23);
+                        }
+
+                        .bi-whatsapp{
+                            color: var(--color-22);
+                        }
+                    }
                 }
             }
             
         }
-    
-        &-buttons{
+
+        &-description{
+            @include mixins.sizes(100%, auto, 1250px);
+            h3{
+                @extend %h-lg-01;
+            }     
             
-            a{
-                text-decoration: none;
-                font-size: 3em;
-                color: var(--color-regular-text);
-                padding: 5px;
+            p{
+                @extend %p-sm;
             }
         }
+    
 
         &-gallery{
+            h3{
+                @extend %h-lg-01;
+            }
+
             @include mixins.sizes(100%, auto, 1250px);
             border-radius: 12px;
         }
@@ -126,15 +153,27 @@
                     align-items: center;
                     width: 90%;
 
-                    p{
+                    h2, p{
                         text-align: center;
                     }
+
                 }
             }
 
-            &-buttons{
-                a{
-                    font-size: 2.1em;
+            &-description{
+
+                h3{
+                    font-size: 1.4em;
+                }
+
+                p{
+                    font-size: .8em;
+                }
+            }
+
+            &-gallery{
+                h3{
+                    font-size: 1.4em;
                 }
             }
 

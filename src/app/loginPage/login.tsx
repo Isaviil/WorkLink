@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
+import Register from '../register/register';
 
 export default function Login(){
 
@@ -18,6 +19,11 @@ export default function Login(){
 
     //router
     const router = useRouter();
+
+
+    //State: <Register/>
+    const [registrar, setRegistrar] = useState(false);
+
 
 
     //Animando login & h3
@@ -106,6 +112,11 @@ export default function Login(){
 
     return (
         <section className="login" ref={loginRef}>
+
+            {
+                registrar && <Register changeState = {setRegistrar}/>
+            }
+
             <div className="login-text">
                 <h3 ref={h3Ref01}>Crea tu perfil</h3>
                 <h3 ref={h3Ref02}>Muestra tus servicios</h3>
@@ -141,6 +152,21 @@ export default function Login(){
 
                 <div className="login-modal-reminder">
                     <p>Trabajas con nosotros? <button onClick={()=> {
+                       setRegistrar(true);                        
+                    }}>Crea tu cuenta</button></p>
+                </div>
+
+            </div>
+        </section>
+    )
+}
+
+
+
+/*
+
+                <div className="login-modal-reminder">
+                    <p>Trabajas con nosotros? <button onClick={()=> {
                         const tl = gsap.timeline();
                         tl.fromTo(loginModalRef.current, {
                             xPercent: 0, opacity: 1}, {xPercent: 100, opacity: 0, duration: .5, ease: "power2.out"})
@@ -155,8 +181,4 @@ export default function Login(){
                         
                     }}>Crea tu cuenta</button></p>
                 </div>
-
-            </div>
-        </section>
-    )
-}
+*/

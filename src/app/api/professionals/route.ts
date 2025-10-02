@@ -13,7 +13,7 @@ export async function POST(req: Request){
 
     if (!name || !lastname || !email || !password) {
       return NextResponse.json(
-        { error: "Faltan campos obligatorios" },
+        { error: "Hubo un error al crear la cuenta." },
         { status: 400 }
       );
     }
@@ -55,7 +55,6 @@ export async function GET(req: Request){
     found.forEach(p => delete (p as Partial<typeof p>).password);
 
     const result = id? found[0]: found;
-    console.log(result)
 
     return NextResponse.json({result});
 

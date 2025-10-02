@@ -4,9 +4,10 @@ import Navbar from '../reusablecomponents/navbar/nav';
 import './professionals.scss';
 import { useRouter } from 'next/navigation';
 import FilterLoc from '../reusablecomponents/filterLocation/filterlocation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import FooterPage from '../reusablecomponents/footer/foot';
 import Lupa from '../reusablecomponents/lupa/lupa';
+import gsap from 'gsap';
 
 export default function Professionals(){
 
@@ -54,6 +55,19 @@ export default function Professionals(){
         refetchOnWindowFocus: false,
         retry: false
     });
+
+
+
+
+    //gsap + const
+    useEffect(()=>{
+
+        const professionalsArray = gsap.utils.toArray(".professionals-display-elements-container-user");
+        if (data?.result && data?.result.length>0){
+            gsap.fromTo(professionalsArray, {opacity: 0, x: 10}, {opacity: 1, x: 0, stagger: .25, ease: "power2.out"})
+        }
+
+    }, [data?.result.length])
 
 
 

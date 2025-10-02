@@ -2,36 +2,101 @@
 @use '../../styles//placeholders';
 
 .footer-container{
+    @extend %main-container;
     background-color: var(--footer-color-01);
-    @include mixins.sizes(100%, auto);
-    @include mixins.flex-prop(center, center, column, 5px);
-    padding: 40px 0px;
+    padding: 40px 20px 10px 20px;
+    gap: 30px;
+    overflow-x: hidden;
 
-    p{
-        @extend %p-xs-01;
-        font-weight: 400;
+    &-title{
+        @include mixins.sizes(100%, auto);
+
+        h2{
+            @extend %h-lg-06;
+            font-weight: 600;
+        }
     }
 
-    &-icons{
-        @include mixins.flex-prop(center, center, null, 15px);
+    &-elements{
+        @include mixins.flex-prop(start , center, null, 30px);
+        @include mixins.sizes(100%, 7rem);
 
-        a{
-            font-style: none;
-            i{
-                @extend %h-lg-04;
+        &-display{
+            @include mixins.flex-prop(start , center, column, 10px);
+            @include mixins.sizes(20%, 100%);
+
+            h3{
+                @extend %h-lg-01;
+                font-weight: 700;
+                font-family: "Play";
+            }
+
+                a{
+                    @extend %p-xs-01;
+                    text-decoration: none;
+                    font-weight: 400;
+                }
+
+            &-socials{
+                @include mixins.flex-prop(center, center, column);
+
+                a{
+                    @extend %p-xs-01;
+                    text-decoration: none;
+                    font-weight: 400;
+                }
             }
         }
-        
     }
 
+    &-copyright{
+        @include mixins.sizes(70%, auto);
 
-    @include mixins.respond-to(md){
-        padding: 25px 0px;
+        hr{
+            opacity: .3;
+        }
 
         p{
-            font-size: .74em;
+            @extend %p-xs-02;
             text-align: center;
         }
     }
 
+    @include mixins.respond-to(md){
+
+        padding: 20px 15px 10px 15px;
+
+        &-title{
+
+            h2{
+                font-size: 1.8em;
+            }
+        }
+
+        &-elements{
+            flex-wrap: wrap;
+            height: auto;
+            justify-content: center;
+
+            &-display{
+                width: auto;
+                min-height: 90px;
+
+                h3{
+                    font-size: 1.35em;
+                }
+
+                    a{
+                        font-size: .8em;
+                    }
+
+                &-socials{
+
+                    a{
+
+                    }
+                }
+            }
+        }        
+    }
 }

@@ -70,32 +70,50 @@ export default function Edit({info, onClose}: dataType){
         <form className="edit" onSubmit={handleSubmit}>
 
             <div className="edit-fields">
-                <label htmlFor="name">Nombre</label>
-                <input id="name" name="name" type="text" autoComplete="given-name" defaultValue={info.name}/>
+                <div className="edit-fields-element">
+                    <label htmlFor="name">Nombre</label>
+                    <input id="name" name="name" type="text" autoComplete="given-name" defaultValue={info.name}/>
+                </div>
 
-                <label htmlFor="lastname">Apellido</label>
-                <input id="lastname" name="lastname" type="text" autoComplete="family-name" defaultValue={info.lastname}/>
+                <div className="edit-fields-element">
+                    <label htmlFor="lastname">Apellido</label>
+                    <input id="lastname" name="lastname" type="text" autoComplete="family-name" defaultValue={info.lastname}/>
+                </div>
 
-                <label htmlFor="email">Email</label>
-                <input id="email" name="email" type="text" autoComplete="email" defaultValue={info.email}/>
+                <div className="edit-fields-element">
+                    <label htmlFor="email">Email</label>
+                    <input id="email" name="email" type="text" autoComplete="email" defaultValue={info.email}/>
+                </div>
 
-                <label htmlFor="description">Descripción</label>
-                <textarea id="description" name="description" defaultValue={info.description || ""}/>
+                <div className="edit-fields-element">
+                    <label htmlFor="district">Distrito</label>
+                    <input id="district" name="district" type="text" defaultValue={info.district || ""}/>
+                </div>
 
-                <label htmlFor="district">Distrito</label>
-                <input id="district" name="district" type="text" defaultValue={info.district || ""}/>
+                <div className="edit-fields-element">
+                    <label htmlFor="city">Ciudad</label>
+                    <input id="city" name="city" type="text" defaultValue={info.city || ""}/>
+                </div>
 
-                <label htmlFor="city">Ciudad</label>
-                <input id="city" name="city" type="text" defaultValue={info.city || ""}/>
+                <div className="edit-fields-element">
+                    <label htmlFor="maps_url">Maps URL</label>
+                    <input id="maps_url" name="maps_url" type="text" defaultValue={info.maps_url || ""}/>
+                </div>
 
-                <label htmlFor="maps_url">Maps URL</label>
-                <input id="maps_url" name="maps_url" type="text" defaultValue={info.maps_url || ""}/>
+                <div className="edit-fields-element">
+                    <label htmlFor="price">Precio</label>
+                    <input id="price" name="price" type="number" defaultValue={info.price || ""}/>
+                </div>
 
-                <label htmlFor="price">Precio</label>
-                <input id="price" name="price" type="number" defaultValue={info.price || ""}/>
+                <div className="edit-fields-element">
+                    <label htmlFor="phone">Teléfono</label>
+                    <input id="phone" name="phone" type="text" defaultValue={info.phone || ""}/>
+                </div>
 
-                <label htmlFor="phone">Teléfono</label>
-                <input id="phone" name="phone" type="text" defaultValue={info.phone || ""}/>
+                <div className="edit-fields-area">
+                    <label htmlFor="description">Descripción</label>
+                    <textarea id="description" name="description" defaultValue={info.description || ""}/>
+                </div>
             </div>
 
             <div className="edit-buttons">
